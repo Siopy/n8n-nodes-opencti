@@ -1,0 +1,11 @@
+export { observableOperations, observableFields } from './ObservableDescription';
+export { reportOperations, reportFields } from './ReportDescription';
+export { noteOperations, noteFields } from './NoteDescription';
+export { taskOperations, taskFields } from './TaskDescription';
+export { threatActorOperations, threatActorFields } from './ThreatActorDescription';
+export { labelOperations, labelFields } from './LabelDescription';
+export { relationshipOperations, relationshipFields } from './RelationshipDescription';
+export { indicatorOperations, indicatorFields } from './IndicatorDescription';
+export { incidentOperations, incidentFields } from './IncidentDescription';
+export { malwareOperations, malwareFields } from './MalwareDescription';
+export { vulnerabilityOperations, vulnerabilityFields } from './VulnerabilityDescription';

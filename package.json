@@ -1,0 +1,55 @@
+{
+	"name": "n8n-nodes-opencti",
+	"version": "0.1.0",
+	"description": "n8n community node for OpenCTI - Cyber Threat Intelligence Platform",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"opencti",
+		"cyber-threat-intelligence",
+		"stix",
+		"graphql"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Siopy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Siopy/n8n-opencti-node"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/OpenCtiApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/OpenCti/OpenCti.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"@types/node": "^22.0.0",
+		"eslint": "9.32.0",
+		"n8n-workflow": "^2.7.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
