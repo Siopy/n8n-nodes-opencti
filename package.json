@@ -12,7 +12,8 @@
 	],
 	"license": "MIT",
 	"author": {
-		"name": "Siopy"
+		"name": "Siopy",
+		"email": "contact@siopysec.com"
 	},
 	"repository": {
 		"type": "git",
