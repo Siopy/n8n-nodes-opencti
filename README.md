@@ -8,8 +8,6 @@ This node communicates with OpenCTI's GraphQL API to manage threat intelligence 
 
 - [Installation](#installation)
 - [Supported Resources](#supported-resources)
-- [Prerequisites](#prerequisites)
-- [Private Deployment (Docker)](#private-deployment-docker)
 - [Credentials Setup](#credentials-setup)
 - [Development](#development)
 - [Usage Examples](#usage-examples)
