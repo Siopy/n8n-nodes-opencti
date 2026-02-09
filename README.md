@@ -72,98 +72,9 @@ IPv4, IPv6, Domain Name, URL, Email Address, Hostname, File, MAC Address, User A
 | `located-at` | Geographic location |
 | `variant-of` / `part-of` | Structural relationships |
 
-## Prerequisites
-
-- **n8n** >= 1.0 (Docker or standalone)
-- **OpenCTI** >= 5.x with an account that has an API key
-- **Node.js** >= 18 (for development only)
-
-## Private Deployment (Docker)
-
-### 1. Clone and build the project
-
-```bash
-git clone <repo-url>
-cd n8n-opencti-node
-npm install
-npm run build
-```
-
-### 2. Configure docker-compose.yml
-
-```yaml
-services:
-  n8n:
-    image: docker.n8n.io/n8nio/n8n:latest
-    container_name: n8n
-    restart: always
-    ports:
-      - "5678:5678"
-    environment:
-      - N8N_LOG_LEVEL=info
-      - N8N_TEMPLATES_ENABLED=true
-      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-      - N8N_CUSTOM_EXTENSIONS=/home/node/custom-nodes/n8n-nodes-opencti
-    volumes:
-      - n8n_data:/home/node/.n8n
-      - /path/to/n8n-opencti-node:/home/node/custom-nodes/n8n-nodes-opencti
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-volumes:
-  n8n_data:
-```
-
-> **Important**: `N8N_CUSTOM_EXTENSIONS` must point to the path **inside the container** (the volume mount destination), not the local host path.
-
-### 3. Start or restart n8n
-
-```bash
-docker compose up -d
-
-# Or if already running:
-docker compose restart n8n
-```
-
-### 4. Verify the node is loaded
-
-```bash
-# Check startup logs
-docker logs n8n --tail 50
-
-# The "OpenCTI" node should appear in the n8n node panel
-```
-
-### Iterative development workflow
-
-After each code change:
-
-```bash
-npm run build && docker compose restart n8n
-```
-
-### Alternative deployment: install into the n8n volume
-
-If you don't want to mount an additional volume:
-
-```bash
-# Copy the built project into the container
-docker cp /path/to/n8n-opencti-node n8n:/tmp/n8n-nodes-opencti
-
-# Install into n8n's custom directory
-docker exec -u root n8n sh -c "
-  mkdir -p /home/node/.n8n/custom &&
-  cd /home/node/.n8n/custom &&
-  npm install /tmp/n8n-nodes-opencti
-"
-
-# Restart
-docker compose restart n8n
-```
-
 ## Credentials Setup
 
-1. Open n8n in your browser (`http://localhost:5678`)
+1. Open n8n in your browser (ex: `http://localhost:5678`)
 2. Go to **Credentials > New Credential**
 3. Search for **OpenCTI API**
 4. Fill in the fields:
@@ -216,27 +127,6 @@ n8n-nodes-opencti/
 ├── LICENSE
 └── README.md
 ```
-
-### Commands
-
-| Command | Description |
-|---|---|
-| `npm install` | Install dependencies |
-| `npm run build` | Build project with n8n-node CLI |
-| `npm run lint` | Lint code with ESLint |
-| `npm run lint:fix` | Lint and auto-fix issues |
-| `npm run dev` | Development mode with n8n-node CLI |
-| `npm run release` | Publish to npm |
-
-### Architecture
-
-This node uses the **programmatic style** (with an `execute()` method) because OpenCTI exposes a GraphQL API, which is incompatible with n8n's declarative style (designed for REST APIs).
-
-Each API call is a `POST /graphql` request with a `query` and `variables`. The `openCtiApiRequest()` helper in `GenericFunctions.ts` centralizes authentication and error handling.
-
-**OpenCTI update patterns**:
-- **Nested**: `entityEdit(id).fieldPatch(input)` - Report, Note, Observable, ThreatActor, Label, Incident, Malware, Vulnerability, Relationship
-- **Flat**: `entityFieldPatch(id, input)` - Task, Indicator
 
 ## Usage Examples
 
