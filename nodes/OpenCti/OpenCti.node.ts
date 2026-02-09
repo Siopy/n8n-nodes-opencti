@@ -408,7 +408,7 @@ async function executeObservableCreate(this: IExecuteFunctions, i: number): Prom
 	const query = `
 		mutation StixCyberObservableAdd(
 			$type: String!
-			${inputField}: ${inputField}AddInput
+			$${inputField}: ${inputField}AddInput
 			$x_opencti_score: Int
 			$x_opencti_description: String
 			$createdBy: String
