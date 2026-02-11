@@ -2221,8 +2221,8 @@ async function executeSightingSearch(this: IExecuteFunctions, i: number): Promis
 
 	if (searchOptions.search) variables.search = searchOptions.search;
 	if (searchOptions.fromOrToId) variables.fromOrToId = searchOptions.fromOrToId;
-	if (searchOptions.fromId) variables.fromId = [searchOptions.fromId as string];
-	if (searchOptions.toId) variables.toId = [searchOptions.toId as string];
+	if (searchOptions.fromId) variables.fromId = searchOptions.fromId;
+	if (searchOptions.toId) variables.toId = searchOptions.toId;
 	if (searchOptions.fromTypes) variables.fromTypes = splitCommaSeparated(searchOptions.fromTypes as string);
 	if (searchOptions.toTypes) variables.toTypes = splitCommaSeparated(searchOptions.toTypes as string);
 
@@ -2231,8 +2231,8 @@ async function executeSightingSearch(this: IExecuteFunctions, i: number): Promis
 			$first: Int
 			$search: String
 			$fromOrToId: String
-			$fromId: [String]
-			$toId: [String]
+			$fromId: StixRef
+			$toId: StixRef
 			$fromTypes: [String]
 			$toTypes: [String]
 			$orderBy: StixSightingRelationshipsOrdering
