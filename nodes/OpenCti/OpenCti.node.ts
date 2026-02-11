@@ -3660,7 +3660,7 @@ async function executeIndividualSearch(this: IExecuteFunctions, i: number): Prom
 	const limit = this.getNodeParameter('limit', i) as number;
 	const query = `
 		query Individuals($first: Int, $search: String) {
-			individuals(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+			individuals(first: $first, search: $search, orderBy: created, orderMode: desc) {
 				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
 				pageInfo { globalCount }
 			}
@@ -3741,7 +3741,7 @@ async function executeSystemSearch(this: IExecuteFunctions, i: number): Promise<
 	const limit = this.getNodeParameter('limit', i) as number;
 	const query = `
 		query Systems($first: Int, $search: String) {
-			systems(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+			systems(first: $first, search: $search, orderBy: created, orderMode: desc) {
 				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
 				pageInfo { globalCount }
 			}
@@ -4097,11 +4097,9 @@ async function executeMarkingDefinitionDelete(this: IExecuteFunctions, i: number
 async function executeKillChainPhaseCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
 	const kill_chain_name = this.getNodeParameter('kill_chain_name', i) as string;
 	const phase_name = this.getNodeParameter('phase_name', i) as string;
-	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+	const x_opencti_order = this.getNodeParameter('x_opencti_order', i) as number;
 
-	const input: IDataObject = { kill_chain_name, phase_name };
-
-	if (additionalFields.x_opencti_order !== undefined) input.x_opencti_order = additionalFields.x_opencti_order;
+	const input: IDataObject = { kill_chain_name, phase_name, x_opencti_order };
 
 	const query = `
 		mutation KillChainPhaseAdd($input: KillChainPhaseAddInput!) {

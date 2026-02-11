@@ -80,26 +80,18 @@ export const killChainPhaseFields: INodeProperties[] = [
 		description: 'The name of the phase in the kill chain',
 	},
 	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
+		displayName: 'Order',
+		name: 'x_opencti_order',
+		type: 'number',
+		required: true,
 		displayOptions: {
 			show: {
 				resource: ['killChainPhase'],
 				operation: ['create'],
 			},
 		},
-		options: [
-			{
-				displayName: 'Order',
-				name: 'x_opencti_order',
-				type: 'number',
-				default: 0,
-				description: 'The order of the phase in the kill chain',
-			},
-		],
+		default: 0,
+		description: 'The order of the phase in the kill chain',
 	},
 
 	// ----------------------------------
