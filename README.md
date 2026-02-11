@@ -46,6 +46,7 @@ Then restart n8n.
 | **Incident** | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Malware** | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Vulnerability** (CVSS, EPSS, CISA KEV) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Sighting** (STIX Sighting Relationship) | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Relationship** (STIX Core Relationship) | ✅ | ✅ | ✅ | - | ✅ |
 
 ### Supported Observable Types
@@ -116,6 +117,7 @@ n8n-nodes-opencti/
 │       ├── IncidentDescription.ts
 │       ├── MalwareDescription.ts
 │       ├── VulnerabilityDescription.ts
+│       ├── SightingDescription.ts
 │       └── index.ts
 ├── .prettierrc.js                      # Prettier config
 ├── eslint.config.mjs                   # ESLint config
@@ -277,6 +279,18 @@ STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
 | Get | `id` | - |
 | Search | - | `searchTerm`, `limit` |
 | Update | `id` | `name`, `description`, `cvss_base_score`, `cvss_base_severity` |
+| Delete | `id` | - |
+
+### Sighting
+
+STIX Sighting Relationship — represents the belief that an entity (indicator, malware, etc.) was seen in a specific context.
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `fromId`, `toId`, `attribute_count` | `description`, `first_seen`, `last_seen`, `confidence`, `x_opencti_negative`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `fromOrToId`, `fromId`, `toId`, `fromTypes`, `toTypes`, `limit` |
+| Update | `id` | `description`, `first_seen`, `last_seen`, `attribute_count`, `confidence`, `x_opencti_negative` |
 | Delete | `id` | - |
 
 ### Relationship

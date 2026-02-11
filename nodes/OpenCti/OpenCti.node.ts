@@ -26,6 +26,7 @@ import {
 	incidentOperations, incidentFields,
 	malwareOperations, malwareFields,
 	vulnerabilityOperations, vulnerabilityFields,
+	sightingOperations, sightingFields,
 } from './descriptions';
 
 export class OpenCti implements INodeType {
@@ -64,6 +65,7 @@ export class OpenCti implements INodeType {
 					{ name: 'Observable', value: 'observable' },
 					{ name: 'Relationship', value: 'relationship' },
 					{ name: 'Report', value: 'report' },
+					{ name: 'Sighting', value: 'sighting' },
 					{ name: 'Task', value: 'task' },
 					{ name: 'Threat Actor', value: 'threatActor' },
 					{ name: 'Vulnerability', value: 'vulnerability' },
@@ -82,6 +84,7 @@ export class OpenCti implements INodeType {
 			...incidentOperations,
 			...malwareOperations,
 			...vulnerabilityOperations,
+			...sightingOperations,
 			// Fields
 			...observableFields,
 			...reportFields,
@@ -94,6 +97,7 @@ export class OpenCti implements INodeType {
 			...incidentFields,
 			...malwareFields,
 			...vulnerabilityFields,
+			...sightingFields,
 		],
 	};
 
@@ -222,6 +226,23 @@ export class OpenCti implements INodeType {
 						responseData = await executeRelationshipSearch.call(this, i);
 					} else if (operation === 'delete') {
 						responseData = await executeRelationshipDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      SIGHTING
+				// ============================================================
+				else if (resource === 'sighting') {
+					if (operation === 'create') {
+						responseData = await executeSightingCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeSightingGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeSightingSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeSightingUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeSightingDelete.call(this, i);
 					}
 				}
 
@@ -2103,6 +2124,194 @@ async function executeVulnerabilityDelete(this: IExecuteFunctions, i: number): P
 	const query = `
 		mutation VulnerabilityEdit($id: ID!) {
 			vulnerabilityEdit(id: $id) {
+				delete
+			}
+		}
+	`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// SIGHTING operations
+// ============================================================
+
+async function executeSightingCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const fromId = this.getNodeParameter('fromId', i) as string;
+	const toId = this.getNodeParameter('toId', i) as string;
+	const attribute_count = this.getNodeParameter('attribute_count', i) as number;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { fromId, toId, attribute_count };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.first_seen) input.first_seen = toIsoDate(additionalFields.first_seen as string);
+	if (additionalFields.last_seen) input.last_seen = toIsoDate(additionalFields.last_seen as string);
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.x_opencti_negative !== undefined) input.x_opencti_negative = additionalFields.x_opencti_negative;
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation StixSightingRelationshipAdd($input: StixSightingRelationshipAddInput!) {
+			stixSightingRelationshipAdd(input: $input) {
+				id
+				standard_id
+				entity_type
+				description
+				first_seen
+				last_seen
+				attribute_count
+				x_opencti_negative
+				confidence
+				created_at
+				updated_at
+				from { ... on BasicObject { id entity_type } }
+				to { ... on BasicObject { id entity_type } }
+				createdBy { id name }
+				objectMarking { id definition }
+				objectLabel { id value color }
+			}
+		}
+	`;
+
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.stixSightingRelationshipAdd as IDataObject;
+}
+
+async function executeSightingGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sightingId', i) as string;
+	const query = `
+		query StixSightingRelationship($id: String!) {
+			stixSightingRelationship(id: $id) {
+				id
+				standard_id
+				entity_type
+				description
+				first_seen
+				last_seen
+				attribute_count
+				x_opencti_negative
+				confidence
+				created_at
+				updated_at
+				from { ... on BasicObject { id entity_type } }
+				to { ... on BasicObject { id entity_type } }
+				createdBy { id name }
+				objectMarking { id definition }
+				objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.stixSightingRelationship as IDataObject;
+}
+
+async function executeSightingSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const limit = this.getNodeParameter('limit', i) as number;
+	const searchOptions = this.getNodeParameter('searchOptions', i) as IDataObject;
+
+	const variables: IDataObject = {
+		first: limit,
+		orderBy: 'created_at',
+		orderMode: 'desc',
+	};
+
+	if (searchOptions.search) variables.search = searchOptions.search;
+	if (searchOptions.fromOrToId) variables.fromOrToId = searchOptions.fromOrToId;
+	if (searchOptions.fromId) variables.fromId = [searchOptions.fromId as string];
+	if (searchOptions.toId) variables.toId = [searchOptions.toId as string];
+	if (searchOptions.fromTypes) variables.fromTypes = splitCommaSeparated(searchOptions.fromTypes as string);
+	if (searchOptions.toTypes) variables.toTypes = splitCommaSeparated(searchOptions.toTypes as string);
+
+	const query = `
+		query StixSightingRelationships(
+			$first: Int
+			$search: String
+			$fromOrToId: String
+			$fromId: [String]
+			$toId: [String]
+			$fromTypes: [String]
+			$toTypes: [String]
+			$orderBy: StixSightingRelationshipsOrdering
+			$orderMode: OrderingMode
+		) {
+			stixSightingRelationships(
+				first: $first
+				search: $search
+				fromOrToId: $fromOrToId
+				fromId: $fromId
+				toId: $toId
+				fromTypes: $fromTypes
+				toTypes: $toTypes
+				orderBy: $orderBy
+				orderMode: $orderMode
+			) {
+				edges {
+					node {
+						id
+						standard_id
+						entity_type
+						description
+						first_seen
+						last_seen
+						attribute_count
+						x_opencti_negative
+						confidence
+						created_at
+						from { ... on BasicObject { id entity_type } }
+						to { ... on BasicObject { id entity_type } }
+						createdBy { id name }
+						objectMarking { id definition }
+					}
+				}
+				pageInfo { globalCount }
+			}
+		}
+	`;
+
+	const data = await openCtiApiRequest.call(this, query, variables);
+	return data.stixSightingRelationships as IDataObject;
+}
+
+async function executeSightingUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sightingId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+
+	if (editInputs.length === 0) {
+		return { id, message: 'No fields to update' };
+	}
+
+	const query = `
+		mutation StixSightingRelationshipEdit($id: ID!, $input: [EditInput]!) {
+			stixSightingRelationshipEdit(id: $id) {
+				fieldPatch(input: $input) {
+					id
+					standard_id
+					description
+					first_seen
+					last_seen
+					attribute_count
+					x_opencti_negative
+					confidence
+					updated_at
+				}
+			}
+		}
+	`;
+
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.stixSightingRelationshipEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeSightingDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sightingId', i) as string;
+	const query = `
+		mutation StixSightingRelationshipEdit($id: ID!) {
+			stixSightingRelationshipEdit(id: $id) {
 				delete
 			}
 		}

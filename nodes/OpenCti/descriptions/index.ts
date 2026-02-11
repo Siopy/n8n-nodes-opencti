@@ -9,3 +9,4 @@ export { indicatorOperations, indicatorFields } from './IndicatorDescription';
 export { incidentOperations, incidentFields } from './IncidentDescription';
 export { malwareOperations, malwareFields } from './MalwareDescription';
 export { vulnerabilityOperations, vulnerabilityFields } from './VulnerabilityDescription';
+export { sightingOperations, sightingFields } from './SightingDescription';
