@@ -27,6 +27,24 @@ import {
 	malwareOperations, malwareFields,
 	vulnerabilityOperations, vulnerabilityFields,
 	sightingOperations, sightingFields,
+	attackPatternOperations, attackPatternFields,
+	campaignOperations, campaignFields,
+	intrusionSetOperations, intrusionSetFields,
+	toolOperations, toolFields,
+	infrastructureOperations, infrastructureFields,
+	courseOfActionOperations, courseOfActionFields,
+	sectorOperations, sectorFields,
+	countryOperations, countryFields,
+	cityOperations, cityFields,
+	regionOperations, regionFields,
+	positionOperations, positionFields,
+	individualOperations, individualFields,
+	systemOperations, systemFields,
+	observedDataOperations, observedDataFields,
+	opinionOperations, opinionFields,
+	externalReferenceOperations, externalReferenceFields,
+	markingDefinitionOperations, markingDefinitionFields,
+	killChainPhaseOperations, killChainPhaseFields,
 } from './descriptions';
 
 export class OpenCti implements INodeType {
@@ -57,17 +75,35 @@ export class OpenCti implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				options: [
+					{ name: 'Attack Pattern', value: 'attackPattern' },
+					{ name: 'Campaign', value: 'campaign' },
+					{ name: 'City', value: 'city' },
+					{ name: 'Country', value: 'country' },
+					{ name: 'Course of Action', value: 'courseOfAction' },
+					{ name: 'External Reference', value: 'externalReference' },
 					{ name: 'Incident', value: 'incident' },
 					{ name: 'Indicator', value: 'indicator' },
+					{ name: 'Individual', value: 'individual' },
+					{ name: 'Infrastructure', value: 'infrastructure' },
+					{ name: 'Intrusion Set', value: 'intrusionSet' },
+					{ name: 'Kill Chain Phase', value: 'killChainPhase' },
 					{ name: 'Label', value: 'label' },
 					{ name: 'Malware', value: 'malware' },
+					{ name: 'Marking Definition', value: 'markingDefinition' },
 					{ name: 'Note (RFI)', value: 'note' },
 					{ name: 'Observable', value: 'observable' },
+					{ name: 'Observed Data', value: 'observedData' },
+					{ name: 'Opinion', value: 'opinion' },
+					{ name: 'Position', value: 'position' },
+					{ name: 'Region', value: 'region' },
 					{ name: 'Relationship', value: 'relationship' },
 					{ name: 'Report', value: 'report' },
+					{ name: 'Sector', value: 'sector' },
 					{ name: 'Sighting', value: 'sighting' },
+					{ name: 'System', value: 'system' },
 					{ name: 'Task', value: 'task' },
 					{ name: 'Threat Actor', value: 'threatActor' },
+					{ name: 'Tool', value: 'tool' },
 					{ name: 'Vulnerability', value: 'vulnerability' },
 				],
 				default: 'observable',
@@ -85,6 +121,24 @@ export class OpenCti implements INodeType {
 			...malwareOperations,
 			...vulnerabilityOperations,
 			...sightingOperations,
+			...attackPatternOperations,
+			...campaignOperations,
+			...intrusionSetOperations,
+			...toolOperations,
+			...infrastructureOperations,
+			...courseOfActionOperations,
+			...sectorOperations,
+			...countryOperations,
+			...cityOperations,
+			...regionOperations,
+			...positionOperations,
+			...individualOperations,
+			...systemOperations,
+			...observedDataOperations,
+			...opinionOperations,
+			...externalReferenceOperations,
+			...markingDefinitionOperations,
+			...killChainPhaseOperations,
 			// Fields
 			...observableFields,
 			...reportFields,
@@ -98,6 +152,24 @@ export class OpenCti implements INodeType {
 			...malwareFields,
 			...vulnerabilityFields,
 			...sightingFields,
+			...attackPatternFields,
+			...campaignFields,
+			...intrusionSetFields,
+			...toolFields,
+			...infrastructureFields,
+			...courseOfActionFields,
+			...sectorFields,
+			...countryFields,
+			...cityFields,
+			...regionFields,
+			...positionFields,
+			...individualFields,
+			...systemFields,
+			...observedDataFields,
+			...opinionFields,
+			...externalReferenceFields,
+			...markingDefinitionFields,
+			...killChainPhaseFields,
 		],
 	};
 
@@ -311,6 +383,312 @@ export class OpenCti implements INodeType {
 						responseData = await executeVulnerabilityUpdate.call(this, i);
 					} else if (operation === 'delete') {
 						responseData = await executeVulnerabilityDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      ATTACK PATTERN
+				// ============================================================
+				else if (resource === 'attackPattern') {
+					if (operation === 'create') {
+						responseData = await executeAttackPatternCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeAttackPatternGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeAttackPatternSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeAttackPatternUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeAttackPatternDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      CAMPAIGN
+				// ============================================================
+				else if (resource === 'campaign') {
+					if (operation === 'create') {
+						responseData = await executeCampaignCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeCampaignGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeCampaignSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeCampaignUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeCampaignDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      INTRUSION SET
+				// ============================================================
+				else if (resource === 'intrusionSet') {
+					if (operation === 'create') {
+						responseData = await executeIntrusionSetCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeIntrusionSetGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeIntrusionSetSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeIntrusionSetUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeIntrusionSetDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      TOOL
+				// ============================================================
+				else if (resource === 'tool') {
+					if (operation === 'create') {
+						responseData = await executeToolCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeToolGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeToolSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeToolUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeToolDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      INFRASTRUCTURE
+				// ============================================================
+				else if (resource === 'infrastructure') {
+					if (operation === 'create') {
+						responseData = await executeInfrastructureCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeInfrastructureGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeInfrastructureSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeInfrastructureUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeInfrastructureDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      COURSE OF ACTION
+				// ============================================================
+				else if (resource === 'courseOfAction') {
+					if (operation === 'create') {
+						responseData = await executeCourseOfActionCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeCourseOfActionGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeCourseOfActionSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeCourseOfActionUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeCourseOfActionDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      SECTOR
+				// ============================================================
+				else if (resource === 'sector') {
+					if (operation === 'create') {
+						responseData = await executeSectorCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeSectorGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeSectorSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeSectorUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeSectorDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      COUNTRY
+				// ============================================================
+				else if (resource === 'country') {
+					if (operation === 'create') {
+						responseData = await executeCountryCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeCountryGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeCountrySearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeCountryUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeCountryDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      CITY
+				// ============================================================
+				else if (resource === 'city') {
+					if (operation === 'create') {
+						responseData = await executeCityCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeCityGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeCitySearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeCityUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeCityDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      REGION
+				// ============================================================
+				else if (resource === 'region') {
+					if (operation === 'create') {
+						responseData = await executeRegionCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeRegionGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeRegionSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeRegionUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeRegionDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      POSITION
+				// ============================================================
+				else if (resource === 'position') {
+					if (operation === 'create') {
+						responseData = await executePositionCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executePositionGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executePositionSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executePositionUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executePositionDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      INDIVIDUAL
+				// ============================================================
+				else if (resource === 'individual') {
+					if (operation === 'create') {
+						responseData = await executeIndividualCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeIndividualGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeIndividualSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeIndividualUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeIndividualDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      SYSTEM
+				// ============================================================
+				else if (resource === 'system') {
+					if (operation === 'create') {
+						responseData = await executeSystemCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeSystemGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeSystemSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeSystemUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeSystemDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      OBSERVED DATA
+				// ============================================================
+				else if (resource === 'observedData') {
+					if (operation === 'create') {
+						responseData = await executeObservedDataCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeObservedDataGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeObservedDataSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeObservedDataUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeObservedDataDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      OPINION
+				// ============================================================
+				else if (resource === 'opinion') {
+					if (operation === 'create') {
+						responseData = await executeOpinionCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeOpinionGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeOpinionSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeOpinionUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeOpinionDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      EXTERNAL REFERENCE
+				// ============================================================
+				else if (resource === 'externalReference') {
+					if (operation === 'create') {
+						responseData = await executeExternalReferenceCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeExternalReferenceGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeExternalReferenceSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeExternalReferenceUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeExternalReferenceDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      MARKING DEFINITION
+				// ============================================================
+				else if (resource === 'markingDefinition') {
+					if (operation === 'create') {
+						responseData = await executeMarkingDefinitionCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeMarkingDefinitionGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeMarkingDefinitionSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeMarkingDefinitionUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeMarkingDefinitionDelete.call(this, i);
+					}
+				}
+
+				// ============================================================
+				//                      KILL CHAIN PHASE
+				// ============================================================
+				else if (resource === 'killChainPhase') {
+					if (operation === 'create') {
+						responseData = await executeKillChainPhaseCreate.call(this, i);
+					} else if (operation === 'get') {
+						responseData = await executeKillChainPhaseGet.call(this, i);
+					} else if (operation === 'search') {
+						responseData = await executeKillChainPhaseSearch.call(this, i);
+					} else if (operation === 'update') {
+						responseData = await executeKillChainPhaseUpdate.call(this, i);
+					} else if (operation === 'delete') {
+						responseData = await executeKillChainPhaseDelete.call(this, i);
 					}
 				}
 
@@ -2316,6 +2694,1471 @@ async function executeSightingDelete(this: IExecuteFunctions, i: number): Promis
 			}
 		}
 	`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// ATTACK PATTERN operations
+// ============================================================
+
+async function executeAttackPatternCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.x_mitre_id) input.x_mitre_id = additionalFields.x_mitre_id;
+	if (additionalFields.x_mitre_detection) input.x_mitre_detection = additionalFields.x_mitre_detection;
+	if (additionalFields.x_mitre_platforms) input.x_mitre_platforms = splitCommaSeparated(additionalFields.x_mitre_platforms as string);
+	if (additionalFields.aliases) input.aliases = splitCommaSeparated(additionalFields.aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.killChainPhases) input.killChainPhases = splitCommaSeparated(additionalFields.killChainPhases as string);
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation AttackPatternAdd($input: AttackPatternAddInput!) {
+			attackPatternAdd(input: $input) {
+				id standard_id entity_type name description aliases x_mitre_id x_mitre_platforms confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.attackPatternAdd as IDataObject;
+}
+
+async function executeAttackPatternGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('attackPatternId', i) as string;
+	const query = `
+		query AttackPattern($id: String!) {
+			attackPattern(id: $id) {
+				id standard_id entity_type name description aliases x_mitre_id x_mitre_platforms x_mitre_detection confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+				killChainPhases { id kill_chain_name phase_name }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.attackPattern as IDataObject;
+}
+
+async function executeAttackPatternSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query AttackPatterns($first: Int, $search: String) {
+			attackPatterns(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description aliases x_mitre_id confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.attackPatterns as IDataObject;
+}
+
+async function executeAttackPatternUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('attackPatternId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation AttackPatternEdit($id: ID!, $input: [EditInput]!) {
+			attackPatternEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description x_mitre_id updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.attackPatternEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeAttackPatternDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('attackPatternId', i) as string;
+	const query = `mutation AttackPatternEdit($id: ID!) { attackPatternEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// CAMPAIGN operations
+// ============================================================
+
+async function executeCampaignCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.first_seen) input.first_seen = toIsoDate(additionalFields.first_seen as string);
+	if (additionalFields.last_seen) input.last_seen = toIsoDate(additionalFields.last_seen as string);
+	if (additionalFields.objective) input.objective = additionalFields.objective;
+	if (additionalFields.aliases) input.aliases = splitCommaSeparated(additionalFields.aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation CampaignAdd($input: CampaignAddInput!) {
+			campaignAdd(input: $input) {
+				id standard_id entity_type name description aliases first_seen last_seen objective confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.campaignAdd as IDataObject;
+}
+
+async function executeCampaignGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('campaignId', i) as string;
+	const query = `
+		query Campaign($id: String!) {
+			campaign(id: $id) {
+				id standard_id entity_type name description aliases first_seen last_seen objective confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.campaign as IDataObject;
+}
+
+async function executeCampaignSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Campaigns($first: Int, $search: String) {
+			campaigns(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description aliases first_seen last_seen confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.campaigns as IDataObject;
+}
+
+async function executeCampaignUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('campaignId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation CampaignEdit($id: ID!, $input: [EditInput]!) {
+			campaignEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description first_seen last_seen objective updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.campaignEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeCampaignDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('campaignId', i) as string;
+	const query = `mutation CampaignEdit($id: ID!) { campaignEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// INTRUSION SET operations
+// ============================================================
+
+async function executeIntrusionSetCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.first_seen) input.first_seen = toIsoDate(additionalFields.first_seen as string);
+	if (additionalFields.last_seen) input.last_seen = toIsoDate(additionalFields.last_seen as string);
+	if (additionalFields.primary_motivation) input.primary_motivation = additionalFields.primary_motivation;
+	if (additionalFields.resource_level) input.resource_level = additionalFields.resource_level;
+	if (additionalFields.aliases) input.aliases = splitCommaSeparated(additionalFields.aliases as string);
+	if (additionalFields.goals) input.goals = splitCommaSeparated(additionalFields.goals as string);
+	if (additionalFields.secondary_motivations) input.secondary_motivations = splitCommaSeparated(additionalFields.secondary_motivations as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation IntrusionSetAdd($input: IntrusionSetAddInput!) {
+			intrusionSetAdd(input: $input) {
+				id standard_id entity_type name description aliases first_seen last_seen goals resource_level primary_motivation confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.intrusionSetAdd as IDataObject;
+}
+
+async function executeIntrusionSetGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('intrusionSetId', i) as string;
+	const query = `
+		query IntrusionSet($id: String!) {
+			intrusionSet(id: $id) {
+				id standard_id entity_type name description aliases first_seen last_seen goals resource_level primary_motivation secondary_motivations confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.intrusionSet as IDataObject;
+}
+
+async function executeIntrusionSetSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query IntrusionSets($first: Int, $search: String) {
+			intrusionSets(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description aliases first_seen last_seen primary_motivation confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.intrusionSets as IDataObject;
+}
+
+async function executeIntrusionSetUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('intrusionSetId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation IntrusionSetEdit($id: ID!, $input: [EditInput]!) {
+			intrusionSetEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description first_seen last_seen primary_motivation updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.intrusionSetEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeIntrusionSetDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('intrusionSetId', i) as string;
+	const query = `mutation IntrusionSetEdit($id: ID!) { intrusionSetEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// TOOL operations
+// ============================================================
+
+async function executeToolCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.tool_version) input.tool_version = additionalFields.tool_version;
+	if (additionalFields.aliases) input.aliases = splitCommaSeparated(additionalFields.aliases as string);
+	if (additionalFields.tool_types) input.tool_types = splitCommaSeparated(additionalFields.tool_types as string);
+	if (additionalFields.killChainPhases) input.killChainPhases = splitCommaSeparated(additionalFields.killChainPhases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation ToolAdd($input: ToolAddInput!) {
+			toolAdd(input: $input) {
+				id standard_id entity_type name description aliases tool_types tool_version confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.toolAdd as IDataObject;
+}
+
+async function executeToolGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('toolId', i) as string;
+	const query = `
+		query Tool($id: String!) {
+			tool(id: $id) {
+				id standard_id entity_type name description aliases tool_types tool_version confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+				killChainPhases { id kill_chain_name phase_name }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.tool as IDataObject;
+}
+
+async function executeToolSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Tools($first: Int, $search: String) {
+			tools(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description aliases tool_types tool_version confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.tools as IDataObject;
+}
+
+async function executeToolUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('toolId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation ToolEdit($id: ID!, $input: [EditInput]!) {
+			toolEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description tool_version updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.toolEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeToolDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('toolId', i) as string;
+	const query = `mutation ToolEdit($id: ID!) { toolEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// INFRASTRUCTURE operations
+// ============================================================
+
+async function executeInfrastructureCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.first_seen) input.first_seen = toIsoDate(additionalFields.first_seen as string);
+	if (additionalFields.last_seen) input.last_seen = toIsoDate(additionalFields.last_seen as string);
+	if (additionalFields.aliases) input.aliases = splitCommaSeparated(additionalFields.aliases as string);
+	if (additionalFields.infrastructure_types) input.infrastructure_types = splitCommaSeparated(additionalFields.infrastructure_types as string);
+	if (additionalFields.killChainPhases) input.killChainPhases = splitCommaSeparated(additionalFields.killChainPhases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation InfrastructureAdd($input: InfrastructureAddInput!) {
+			infrastructureAdd(input: $input) {
+				id standard_id entity_type name description aliases infrastructure_types first_seen last_seen confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.infrastructureAdd as IDataObject;
+}
+
+async function executeInfrastructureGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('infrastructureId', i) as string;
+	const query = `
+		query Infrastructure($id: String!) {
+			infrastructure(id: $id) {
+				id standard_id entity_type name description aliases infrastructure_types first_seen last_seen confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+				killChainPhases { id kill_chain_name phase_name }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.infrastructure as IDataObject;
+}
+
+async function executeInfrastructureSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Infrastructures($first: Int, $search: String) {
+			infrastructures(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description aliases infrastructure_types first_seen last_seen confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.infrastructures as IDataObject;
+}
+
+async function executeInfrastructureUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('infrastructureId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation InfrastructureEdit($id: ID!, $input: [EditInput]!) {
+			infrastructureEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description first_seen last_seen updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.infrastructureEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeInfrastructureDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('infrastructureId', i) as string;
+	const query = `mutation InfrastructureEdit($id: ID!) { infrastructureEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// COURSE OF ACTION operations
+// ============================================================
+
+async function executeCourseOfActionCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.x_mitre_id) input.x_mitre_id = additionalFields.x_mitre_id;
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation CourseOfActionAdd($input: CourseOfActionAddInput!) {
+			courseOfActionAdd(input: $input) {
+				id standard_id entity_type name description x_mitre_id confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.courseOfActionAdd as IDataObject;
+}
+
+async function executeCourseOfActionGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('courseOfActionId', i) as string;
+	const query = `
+		query CourseOfAction($id: String!) {
+			courseOfAction(id: $id) {
+				id standard_id entity_type name description x_mitre_id x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.courseOfAction as IDataObject;
+}
+
+async function executeCourseOfActionSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query CoursesOfAction($first: Int, $search: String) {
+			coursesOfAction(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description x_mitre_id confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.coursesOfAction as IDataObject;
+}
+
+async function executeCourseOfActionUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('courseOfActionId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation CourseOfActionEdit($id: ID!, $input: [EditInput]!) {
+			courseOfActionEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.courseOfActionEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeCourseOfActionDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('courseOfActionId', i) as string;
+	const query = `mutation CourseOfActionEdit($id: ID!) { courseOfActionEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// SECTOR operations
+// ============================================================
+
+async function executeSectorCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.contact_information) input.contact_information = additionalFields.contact_information;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation SectorAdd($input: SectorAddInput!) {
+			sectorAdd(input: $input) {
+				id standard_id entity_type name description contact_information confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.sectorAdd as IDataObject;
+}
+
+async function executeSectorGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sectorId', i) as string;
+	const query = `
+		query Sector($id: String!) {
+			sector(id: $id) {
+				id standard_id entity_type name description contact_information x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.sector as IDataObject;
+}
+
+async function executeSectorSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Sectors($first: Int, $search: String) {
+			sectors(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.sectors as IDataObject;
+}
+
+async function executeSectorUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sectorId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation SectorEdit($id: ID!, $input: [EditInput]!) {
+			sectorEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description contact_information updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.sectorEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeSectorDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('sectorId', i) as string;
+	const query = `mutation SectorEdit($id: ID!) { sectorEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// COUNTRY operations
+// ============================================================
+
+async function executeCountryCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.latitude !== undefined) input.latitude = additionalFields.latitude;
+	if (additionalFields.longitude !== undefined) input.longitude = additionalFields.longitude;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation CountryAdd($input: CountryAddInput!) {
+			countryAdd(input: $input) {
+				id standard_id entity_type name description latitude longitude confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.countryAdd as IDataObject;
+}
+
+async function executeCountryGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('countryId', i) as string;
+	const query = `
+		query Country($id: String!) {
+			country(id: $id) {
+				id standard_id entity_type name description latitude longitude x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.country as IDataObject;
+}
+
+async function executeCountrySearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Countries($first: Int, $search: String) {
+			countries(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description latitude longitude confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.countries as IDataObject;
+}
+
+async function executeCountryUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('countryId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation CountryEdit($id: ID!, $input: [EditInput]!) {
+			countryEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.countryEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeCountryDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('countryId', i) as string;
+	const query = `mutation CountryEdit($id: ID!) { countryEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// CITY operations
+// ============================================================
+
+async function executeCityCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.latitude !== undefined) input.latitude = additionalFields.latitude;
+	if (additionalFields.longitude !== undefined) input.longitude = additionalFields.longitude;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation CityAdd($input: CityAddInput!) {
+			cityAdd(input: $input) {
+				id standard_id entity_type name description latitude longitude confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.cityAdd as IDataObject;
+}
+
+async function executeCityGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('cityId', i) as string;
+	const query = `
+		query City($id: String!) {
+			city(id: $id) {
+				id standard_id entity_type name description latitude longitude x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.city as IDataObject;
+}
+
+async function executeCitySearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Cities($first: Int, $search: String) {
+			cities(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description latitude longitude confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.cities as IDataObject;
+}
+
+async function executeCityUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('cityId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation CityEdit($id: ID!, $input: [EditInput]!) {
+			cityEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.cityEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeCityDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('cityId', i) as string;
+	const query = `mutation CityEdit($id: ID!) { cityEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// REGION operations
+// ============================================================
+
+async function executeRegionCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation RegionAdd($input: RegionAddInput!) {
+			regionAdd(input: $input) {
+				id standard_id entity_type name description confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.regionAdd as IDataObject;
+}
+
+async function executeRegionGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('regionId', i) as string;
+	const query = `
+		query Region($id: String!) {
+			region(id: $id) {
+				id standard_id entity_type name description x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.region as IDataObject;
+}
+
+async function executeRegionSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Regions($first: Int, $search: String) {
+			regions(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.regions as IDataObject;
+}
+
+async function executeRegionUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('regionId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation RegionEdit($id: ID!, $input: [EditInput]!) {
+			regionEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.regionEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeRegionDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('regionId', i) as string;
+	const query = `mutation RegionEdit($id: ID!) { regionEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// POSITION operations
+// ============================================================
+
+async function executePositionCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.latitude !== undefined) input.latitude = additionalFields.latitude;
+	if (additionalFields.longitude !== undefined) input.longitude = additionalFields.longitude;
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation PositionAdd($input: PositionAddInput!) {
+			positionAdd(input: $input) {
+				id standard_id entity_type name description latitude longitude confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.positionAdd as IDataObject;
+}
+
+async function executePositionGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('positionId', i) as string;
+	const query = `
+		query Position($id: String!) {
+			position(id: $id) {
+				id standard_id entity_type name description latitude longitude confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.position as IDataObject;
+}
+
+async function executePositionSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Positions($first: Int, $search: String) {
+			positions(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description latitude longitude confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.positions as IDataObject;
+}
+
+async function executePositionUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('positionId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation PositionEdit($id: ID!, $input: [EditInput]!) {
+			positionEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description latitude longitude updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.positionEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executePositionDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('positionId', i) as string;
+	const query = `mutation PositionEdit($id: ID!) { positionEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// INDIVIDUAL operations
+// ============================================================
+
+async function executeIndividualCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.contact_information) input.contact_information = additionalFields.contact_information;
+	if (additionalFields.x_opencti_firstname) input.x_opencti_firstname = additionalFields.x_opencti_firstname;
+	if (additionalFields.x_opencti_lastname) input.x_opencti_lastname = additionalFields.x_opencti_lastname;
+	if (additionalFields.x_opencti_reliability) input.x_opencti_reliability = additionalFields.x_opencti_reliability;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation IndividualAdd($input: IndividualAddInput!) {
+			individualAdd(input: $input) {
+				id standard_id entity_type name description contact_information x_opencti_firstname x_opencti_lastname x_opencti_reliability confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.individualAdd as IDataObject;
+}
+
+async function executeIndividualGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('individualId', i) as string;
+	const query = `
+		query Individual($id: String!) {
+			individual(id: $id) {
+				id standard_id entity_type name description contact_information x_opencti_firstname x_opencti_lastname x_opencti_aliases x_opencti_reliability confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.individual as IDataObject;
+}
+
+async function executeIndividualSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Individuals($first: Int, $search: String) {
+			individuals(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.individuals as IDataObject;
+}
+
+async function executeIndividualUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('individualId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation IndividualEdit($id: ID!, $input: [EditInput]!) {
+			individualEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description contact_information x_opencti_firstname x_opencti_lastname updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.individualEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeIndividualDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('individualId', i) as string;
+	const query = `mutation IndividualEdit($id: ID!) { individualEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// SYSTEM operations
+// ============================================================
+
+async function executeSystemCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const name = this.getNodeParameter('name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.contact_information) input.contact_information = additionalFields.contact_information;
+	if (additionalFields.x_opencti_aliases) input.x_opencti_aliases = splitCommaSeparated(additionalFields.x_opencti_aliases as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation SystemAdd($input: SystemAddInput!) {
+			systemAdd(input: $input) {
+				id standard_id entity_type name description contact_information confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.systemAdd as IDataObject;
+}
+
+async function executeSystemGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('systemId', i) as string;
+	const query = `
+		query System($id: String!) {
+			system(id: $id) {
+				id standard_id entity_type name description contact_information x_opencti_aliases confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.system as IDataObject;
+}
+
+async function executeSystemSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Systems($first: Int, $search: String) {
+			systems(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type name description confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.systems as IDataObject;
+}
+
+async function executeSystemUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('systemId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation SystemEdit($id: ID!, $input: [EditInput]!) {
+			systemEdit(id: $id) { fieldPatch(input: $input) { id standard_id name description contact_information updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.systemEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeSystemDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('systemId', i) as string;
+	const query = `mutation SystemEdit($id: ID!) { systemEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// OBSERVED DATA operations
+// ============================================================
+
+async function executeObservedDataCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const first_observed = this.getNodeParameter('first_observed', i) as string;
+	const last_observed = this.getNodeParameter('last_observed', i) as string;
+	const number_observed = this.getNodeParameter('number_observed', i) as number;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = {
+		first_observed: toIsoDate(first_observed),
+		last_observed: toIsoDate(last_observed),
+		number_observed,
+		objects: [],
+	};
+
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objects) input.objects = splitCommaSeparated(additionalFields.objects as string);
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation ObservedDataAdd($input: ObservedDataAddInput!) {
+			observedDataAdd(input: $input) {
+				id standard_id entity_type first_observed last_observed number_observed confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.observedDataAdd as IDataObject;
+}
+
+async function executeObservedDataGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('observedDataId', i) as string;
+	const query = `
+		query ObservedData($id: String!) {
+			observedData(id: $id) {
+				id standard_id entity_type first_observed last_observed number_observed confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+				objects(first: 100) { edges { node { ... on BasicObject { id entity_type } } } }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.observedData as IDataObject;
+}
+
+async function executeObservedDataSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query ObservedDatas($first: Int, $search: String) {
+			observedDatas(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type first_observed last_observed number_observed confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.observedDatas as IDataObject;
+}
+
+async function executeObservedDataUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('observedDataId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation ObservedDataEdit($id: ID!, $input: [EditInput]!) {
+			observedDataEdit(id: $id) { fieldPatch(input: $input) { id standard_id first_observed last_observed number_observed updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.observedDataEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeObservedDataDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('observedDataId', i) as string;
+	const query = `mutation ObservedDataEdit($id: ID!) { observedDataEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// OPINION operations
+// ============================================================
+
+async function executeOpinionCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const opinion = this.getNodeParameter('opinion', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { opinion };
+
+	if (additionalFields.explanation) input.explanation = additionalFields.explanation;
+	if (additionalFields.confidence !== undefined) input.confidence = additionalFields.confidence;
+	if (additionalFields.authors) input.authors = splitCommaSeparated(additionalFields.authors as string);
+	if (additionalFields.objects) input.objects = splitCommaSeparated(additionalFields.objects as string);
+	if (additionalFields.createdBy) input.createdBy = additionalFields.createdBy;
+	if (additionalFields.objectMarking) input.objectMarking = splitCommaSeparated(additionalFields.objectMarking as string);
+	if (additionalFields.objectLabel) input.objectLabel = splitCommaSeparated(additionalFields.objectLabel as string);
+	if (additionalFields.externalReferences) input.externalReferences = splitCommaSeparated(additionalFields.externalReferences as string);
+
+	const query = `
+		mutation OpinionAdd($input: OpinionAddInput!) {
+			opinionAdd(input: $input) {
+				id standard_id entity_type opinion explanation authors confidence created_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.opinionAdd as IDataObject;
+}
+
+async function executeOpinionGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('opinionId', i) as string;
+	const query = `
+		query Opinion($id: String!) {
+			opinion(id: $id) {
+				id standard_id entity_type opinion explanation authors confidence created_at updated_at
+				createdBy { id name } objectMarking { id definition } objectLabel { id value color }
+				objects(first: 100) { edges { node { ... on BasicObject { id entity_type } } } }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.opinion as IDataObject;
+}
+
+async function executeOpinionSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query Opinions($first: Int, $search: String) {
+			opinions(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type opinion explanation authors confidence created_at createdBy { id name } objectLabel { id value color } } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.opinions as IDataObject;
+}
+
+async function executeOpinionUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('opinionId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation OpinionEdit($id: ID!, $input: [EditInput]!) {
+			opinionEdit(id: $id) { fieldPatch(input: $input) { id standard_id opinion explanation updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.opinionEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeOpinionDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('opinionId', i) as string;
+	const query = `mutation OpinionEdit($id: ID!) { opinionEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// EXTERNAL REFERENCE operations
+// ============================================================
+
+async function executeExternalReferenceCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const source_name = this.getNodeParameter('source_name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { source_name };
+
+	if (additionalFields.description) input.description = additionalFields.description;
+	if (additionalFields.url) input.url = additionalFields.url;
+	if (additionalFields.hash) input.hash = additionalFields.hash;
+	if (additionalFields.external_id) input.external_id = additionalFields.external_id;
+
+	const query = `
+		mutation ExternalReferenceAdd($input: ExternalReferenceAddInput!) {
+			externalReferenceAdd(input: $input) {
+				id standard_id entity_type source_name description url hash external_id created_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.externalReferenceAdd as IDataObject;
+}
+
+async function executeExternalReferenceGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('externalReferenceId', i) as string;
+	const query = `
+		query ExternalReference($id: String!) {
+			externalReference(id: $id) {
+				id standard_id entity_type source_name description url hash external_id created_at updated_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.externalReference as IDataObject;
+}
+
+async function executeExternalReferenceSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query ExternalReferences($first: Int, $search: String) {
+			externalReferences(first: $first, search: $search, orderBy: created_at, orderMode: desc) {
+				edges { node { id standard_id entity_type source_name description url external_id created_at } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.externalReferences as IDataObject;
+}
+
+async function executeExternalReferenceUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('externalReferenceId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation ExternalReferenceEdit($id: ID!, $input: [EditInput]!) {
+			externalReferenceEdit(id: $id) { fieldPatch(input: $input) { id standard_id source_name description url external_id updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.externalReferenceEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeExternalReferenceDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('externalReferenceId', i) as string;
+	const query = `mutation ExternalReferenceEdit($id: ID!) { externalReferenceEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// MARKING DEFINITION operations
+// ============================================================
+
+async function executeMarkingDefinitionCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const definition_type = this.getNodeParameter('definition_type', i) as string;
+	const definition = this.getNodeParameter('definition', i) as string;
+	const x_opencti_order = this.getNodeParameter('x_opencti_order', i) as number;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { definition_type, definition, x_opencti_order };
+
+	if (additionalFields.x_opencti_color) input.x_opencti_color = additionalFields.x_opencti_color;
+
+	const query = `
+		mutation MarkingDefinitionAdd($input: MarkingDefinitionAddInput!) {
+			markingDefinitionAdd(input: $input) {
+				id standard_id entity_type definition_type definition x_opencti_order x_opencti_color created_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.markingDefinitionAdd as IDataObject;
+}
+
+async function executeMarkingDefinitionGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('markingDefinitionId', i) as string;
+	const query = `
+		query MarkingDefinition($id: String!) {
+			markingDefinition(id: $id) {
+				id standard_id entity_type definition_type definition x_opencti_order x_opencti_color created_at updated_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.markingDefinition as IDataObject;
+}
+
+async function executeMarkingDefinitionSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query MarkingDefinitions($first: Int, $search: String) {
+			markingDefinitions(first: $first, search: $search, orderBy: definition, orderMode: asc) {
+				edges { node { id standard_id entity_type definition_type definition x_opencti_order x_opencti_color created_at } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.markingDefinitions as IDataObject;
+}
+
+async function executeMarkingDefinitionUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('markingDefinitionId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation MarkingDefinitionEdit($id: ID!, $input: [EditInput]!) {
+			markingDefinitionEdit(id: $id) { fieldPatch(input: $input) { id standard_id definition x_opencti_order x_opencti_color updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.markingDefinitionEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeMarkingDefinitionDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('markingDefinitionId', i) as string;
+	const query = `mutation MarkingDefinitionEdit($id: ID!) { markingDefinitionEdit(id: $id) { delete } }`;
+	await openCtiApiRequest.call(this, query, { id });
+	return { deleted: true, id };
+}
+
+// ============================================================
+// KILL CHAIN PHASE operations
+// ============================================================
+
+async function executeKillChainPhaseCreate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const kill_chain_name = this.getNodeParameter('kill_chain_name', i) as string;
+	const phase_name = this.getNodeParameter('phase_name', i) as string;
+	const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+	const input: IDataObject = { kill_chain_name, phase_name };
+
+	if (additionalFields.x_opencti_order !== undefined) input.x_opencti_order = additionalFields.x_opencti_order;
+
+	const query = `
+		mutation KillChainPhaseAdd($input: KillChainPhaseAddInput!) {
+			killChainPhaseAdd(input: $input) {
+				id standard_id entity_type kill_chain_name phase_name x_opencti_order created_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { input });
+	return data.killChainPhaseAdd as IDataObject;
+}
+
+async function executeKillChainPhaseGet(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('killChainPhaseId', i) as string;
+	const query = `
+		query KillChainPhase($id: String!) {
+			killChainPhase(id: $id) {
+				id standard_id entity_type kill_chain_name phase_name x_opencti_order created_at updated_at
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id });
+	return data.killChainPhase as IDataObject;
+}
+
+async function executeKillChainPhaseSearch(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const searchTerm = this.getNodeParameter('searchTerm', i) as string;
+	const limit = this.getNodeParameter('limit', i) as number;
+	const query = `
+		query KillChainPhases($first: Int, $search: String) {
+			killChainPhases(first: $first, search: $search, orderBy: x_opencti_order, orderMode: asc) {
+				edges { node { id standard_id entity_type kill_chain_name phase_name x_opencti_order created_at } }
+				pageInfo { globalCount }
+			}
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { first: limit, search: searchTerm || undefined });
+	return data.killChainPhases as IDataObject;
+}
+
+async function executeKillChainPhaseUpdate(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('killChainPhaseId', i) as string;
+	const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+	const editInputs = buildEditInputs(updateFields);
+	if (editInputs.length === 0) return { id, message: 'No fields to update' };
+	const query = `
+		mutation KillChainPhaseEdit($id: ID!, $input: [EditInput]!) {
+			killChainPhaseEdit(id: $id) { fieldPatch(input: $input) { id standard_id kill_chain_name phase_name x_opencti_order updated_at } }
+		}
+	`;
+	const data = await openCtiApiRequest.call(this, query, { id, input: editInputs });
+	return (data.killChainPhaseEdit as IDataObject).fieldPatch as IDataObject;
+}
+
+async function executeKillChainPhaseDelete(this: IExecuteFunctions, i: number): Promise<IDataObject> {
+	const id = this.getNodeParameter('killChainPhaseId', i) as string;
+	const query = `mutation KillChainPhaseEdit($id: ID!) { killChainPhaseEdit(id: $id) { delete } }`;
 	await openCtiApiRequest.call(this, query, { id });
 	return { deleted: true, id };
 }

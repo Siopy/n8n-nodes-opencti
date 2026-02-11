@@ -36,18 +36,36 @@ Then restart n8n.
 
 | Resource | Create | Get | Search | Update | Delete |
 |---|:---:|:---:|:---:|:---:|:---:|
-| **Observable** (STIX Cyber Observable) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Report** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Attack Pattern** (MITRE ATT&CK) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Campaign** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **City** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Country** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Course of Action** (MITRE Mitigation) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **External Reference** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Incident** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Indicator** (STIX, YARA, Sigma, Snort...) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Individual** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Infrastructure** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Intrusion Set** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Kill Chain Phase** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Label** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Malware** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Marking Definition** (TLP, PAP) | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Note / RFI** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Observable** (STIX Cyber Observable) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Observed Data** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Opinion** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Position** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Region** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Relationship** (STIX Core Relationship) | ✅ | ✅ | ✅ | - | ✅ |
+| **Report** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Sector** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Sighting** (STIX Sighting Relationship) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **System** | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Task** | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Threat Actor** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Label** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Indicator** (STIX, YARA, Sigma, Snort...) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Incident** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Malware** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Tool** (STIX Tool) | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Vulnerability** (CVSS, EPSS, CISA KEV) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Sighting** (STIX Sighting Relationship) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Relationship** (STIX Core Relationship) | ✅ | ✅ | ✅ | - | ✅ |
 
 ### Supported Observable Types
 
@@ -106,18 +124,36 @@ n8n-nodes-opencti/
 │   ├── opencti.svg                     # Official OpenCTI icon
 │   ├── GenericFunctions.ts             # Helpers: GraphQL requests, filters, dates
 │   └── descriptions/                   # UI descriptions per resource
-│       ├── ObservableDescription.ts
-│       ├── ReportDescription.ts
+│       ├── AttackPatternDescription.ts
+│       ├── CampaignDescription.ts
+│       ├── CityDescription.ts
+│       ├── CountryDescription.ts
+│       ├── CourseOfActionDescription.ts
+│       ├── ExternalReferenceDescription.ts
+│       ├── IncidentDescription.ts
+│       ├── IndicatorDescription.ts
+│       ├── IndividualDescription.ts
+│       ├── InfrastructureDescription.ts
+│       ├── IntrusionSetDescription.ts
+│       ├── KillChainPhaseDescription.ts
+│       ├── LabelDescription.ts
+│       ├── MalwareDescription.ts
+│       ├── MarkingDefinitionDescription.ts
 │       ├── NoteDescription.ts
+│       ├── ObservableDescription.ts
+│       ├── ObservedDataDescription.ts
+│       ├── OpinionDescription.ts
+│       ├── PositionDescription.ts
+│       ├── RegionDescription.ts
+│       ├── RelationshipDescription.ts
+│       ├── ReportDescription.ts
+│       ├── SectorDescription.ts
+│       ├── SightingDescription.ts
+│       ├── SystemDescription.ts
 │       ├── TaskDescription.ts
 │       ├── ThreatActorDescription.ts
-│       ├── LabelDescription.ts
-│       ├── RelationshipDescription.ts
-│       ├── IndicatorDescription.ts
-│       ├── IncidentDescription.ts
-│       ├── MalwareDescription.ts
+│       ├── ToolDescription.ts
 │       ├── VulnerabilityDescription.ts
-│       ├── SightingDescription.ts
 │       └── index.ts
 ├── .prettierrc.js                      # Prettier config
 ├── eslint.config.mjs                   # ESLint config
@@ -179,6 +215,172 @@ n8n-nodes-opencti/
 
 ## Resource Reference
 
+### Attack Pattern
+
+MITRE ATT&CK technique or sub-technique.
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `x_mitre_id`, `x_mitre_platforms`, `x_mitre_detection`, `killChainPhases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `x_mitre_id`, `x_mitre_platforms` |
+| Delete | `id` | - |
+
+### Campaign
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `first_seen`, `last_seen`, `objective`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `first_seen`, `last_seen`, `objective` |
+| Delete | `id` | - |
+
+### City
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `latitude`, `longitude`, `x_opencti_aliases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `latitude`, `longitude` |
+| Delete | `id` | - |
+
+### Country
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `latitude`, `longitude`, `x_opencti_aliases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `latitude`, `longitude` |
+| Delete | `id` | - |
+
+### Course of Action
+
+MITRE ATT&CK mitigation.
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `x_mitre_id`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description` |
+| Delete | `id` | - |
+
+### External Reference
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `source_name` | `description`, `url`, `external_id`, `hash` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `source_name`, `description`, `url`, `external_id` |
+| Delete | `id` | - |
+
+### Incident
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `first_seen`, `last_seen`, `incident_type`, `severity`, `source`, `objective`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `first_seen`, `last_seen`, `severity` |
+| Delete | `id` | - |
+
+### Indicator
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name`, `pattern`, `pattern_type` | `description`, `indicator_types`, `valid_from`, `valid_until`, `score`, `detection`, `main_observable_type`, `createObservables`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `pattern`, `score`, `detection`, `valid_from`, `valid_until`, `confidence` |
+| Delete | `id` | - |
+
+### Individual
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `x_opencti_firstname`, `x_opencti_lastname`, `x_opencti_reliability`, `contact_information`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `x_opencti_firstname`, `x_opencti_lastname`, `contact_information` |
+| Delete | `id` | - |
+
+### Infrastructure
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `infrastructure_types`, `first_seen`, `last_seen`, `killChainPhases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `first_seen`, `last_seen` |
+| Delete | `id` | - |
+
+### Intrusion Set
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `first_seen`, `last_seen`, `goals`, `resource_level`, `primary_motivation`, `secondary_motivations`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `first_seen`, `last_seen`, `primary_motivation` |
+| Delete | `id` | - |
+
+### Kill Chain Phase
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `kill_chain_name`, `phase_name` | `x_opencti_order` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `kill_chain_name`, `phase_name`, `x_opencti_order` |
+| Delete | `id` | - |
+
+### Label
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `value` | `color` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `value`, `color` |
+| Delete | `id` | - |
+
+### Malware
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `aliases`, `malware_types`, `is_family`, `first_seen`, `last_seen`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `is_family`, `first_seen`, `last_seen` |
+| Delete | `id` | - |
+
+### Marking Definition
+
+TLP, PAP, or custom marking definitions.
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `definition_type`, `definition`, `x_opencti_order` | `x_opencti_color` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `definition`, `x_opencti_color`, `x_opencti_order` |
+| Delete | `id` | - |
+
+### Note (RFI)
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `content` | `abstract`, `authors`, `confidence`, `likelihood`, `note_types`, `createdBy`, `objectMarking`, `objectLabel`, `objects` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `abstract`, `content`, `likelihood` |
+| Delete | `id` | - |
+
 ### Observable
 
 STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
@@ -191,6 +393,55 @@ STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
 | Update | `id` | `description`, `score` |
 | Delete | `id` | - |
 
+### Observed Data
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `first_observed`, `last_observed`, `number_observed` | `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences`, `objects` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `first_observed`, `last_observed`, `number_observed` |
+| Delete | `id` | - |
+
+### Opinion
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `opinion` | `explanation`, `authors`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences`, `objects` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `opinion`, `explanation` |
+| Delete | `id` | - |
+
+### Position
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `latitude`, `longitude`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `latitude`, `longitude` |
+| Delete | `id` | - |
+
+### Region
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `x_opencti_aliases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description` |
+| Delete | `id` | - |
+
+### Relationship
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `relationship_type`, `fromId`, `toId` | `description`, `confidence`, `start_time`, `stop_time`, `createdBy`, `objectMarking`, `objectLabel` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `fromOrToId`, `fromId`, `toId`, `relationship_type`, `limit` |
+| Delete | `id` | - |
+
 ### Report
 
 | Operation | Required | Optional |
@@ -201,14 +452,36 @@ STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
 | Update | `id` | `name`, `description`, `content`, `confidence`, `published` |
 | Delete | `id` | - |
 
-### Note (RFI)
+### Sector
 
 | Operation | Required | Optional |
 |---|---|---|
-| Create | `content` | `abstract`, `authors`, `confidence`, `likelihood`, `note_types`, `createdBy`, `objectMarking`, `objectLabel`, `objects` |
+| Create | `name` | `description`, `contact_information`, `x_opencti_aliases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
 | Get | `id` | - |
 | Search | - | `searchTerm`, `limit` |
-| Update | `id` | `abstract`, `content`, `likelihood` |
+| Update | `id` | `name`, `description`, `contact_information` |
+| Delete | `id` | - |
+
+### Sighting
+
+STIX Sighting Relationship — represents the belief that an entity (indicator, malware, etc.) was seen in a specific context.
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `fromId`, `toId`, `attribute_count` | `description`, `first_seen`, `last_seen`, `confidence`, `x_opencti_negative`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `fromOrToId`, `fromId`, `toId`, `fromTypes`, `toTypes`, `limit` |
+| Update | `id` | `description`, `first_seen`, `last_seen`, `attribute_count`, `confidence`, `x_opencti_negative` |
+| Delete | `id` | - |
+
+### System
+
+| Operation | Required | Optional |
+|---|---|---|
+| Create | `name` | `description`, `contact_information`, `x_opencti_aliases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
+| Get | `id` | - |
+| Search | - | `searchTerm`, `limit` |
+| Update | `id` | `name`, `description`, `contact_information` |
 | Delete | `id` | - |
 
 ### Task
@@ -231,44 +504,16 @@ STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
 | Update | `id` | `name`, `description`, `aliases`, `first_seen`, `last_seen`, `primary_motivation`, `sophistication` |
 | Delete | `id` | - |
 
-### Label
+### Tool
+
+STIX Tool object.
 
 | Operation | Required | Optional |
 |---|---|---|
-| Create | `value` | `color` |
+| Create | `name` | `description`, `aliases`, `tool_types`, `tool_version`, `killChainPhases`, `confidence`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
 | Get | `id` | - |
 | Search | - | `searchTerm`, `limit` |
-| Update | `id` | `value`, `color` |
-| Delete | `id` | - |
-
-### Indicator
-
-| Operation | Required | Optional |
-|---|---|---|
-| Create | `name`, `pattern`, `pattern_type` | `description`, `indicator_types`, `valid_from`, `valid_until`, `score`, `detection`, `main_observable_type`, `createObservables`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
-| Get | `id` | - |
-| Search | - | `searchTerm`, `limit` |
-| Update | `id` | `name`, `description`, `pattern`, `score`, `detection`, `valid_from`, `valid_until`, `confidence` |
-| Delete | `id` | - |
-
-### Incident
-
-| Operation | Required | Optional |
-|---|---|---|
-| Create | `name` | `description`, `aliases`, `first_seen`, `last_seen`, `incident_type`, `severity`, `source`, `objective`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
-| Get | `id` | - |
-| Search | - | `searchTerm`, `limit` |
-| Update | `id` | `name`, `description`, `first_seen`, `last_seen`, `severity` |
-| Delete | `id` | - |
-
-### Malware
-
-| Operation | Required | Optional |
-|---|---|---|
-| Create | `name` | `description`, `aliases`, `malware_types`, `is_family`, `first_seen`, `last_seen`, `confidence`, `createdBy`, `objectMarking`, `objectLabel` |
-| Get | `id` | - |
-| Search | - | `searchTerm`, `limit` |
-| Update | `id` | `name`, `description`, `is_family`, `first_seen`, `last_seen` |
+| Update | `id` | `name`, `description`, `tool_version` |
 | Delete | `id` | - |
 
 ### Vulnerability
@@ -279,27 +524,6 @@ STIX Cyber Observable object (IP address, domain, URL, file hash, etc.).
 | Get | `id` | - |
 | Search | - | `searchTerm`, `limit` |
 | Update | `id` | `name`, `description`, `cvss_base_score`, `cvss_base_severity` |
-| Delete | `id` | - |
-
-### Sighting
-
-STIX Sighting Relationship — represents the belief that an entity (indicator, malware, etc.) was seen in a specific context.
-
-| Operation | Required | Optional |
-|---|---|---|
-| Create | `fromId`, `toId`, `attribute_count` | `description`, `first_seen`, `last_seen`, `confidence`, `x_opencti_negative`, `createdBy`, `objectMarking`, `objectLabel`, `externalReferences` |
-| Get | `id` | - |
-| Search | - | `searchTerm`, `fromOrToId`, `fromId`, `toId`, `fromTypes`, `toTypes`, `limit` |
-| Update | `id` | `description`, `first_seen`, `last_seen`, `attribute_count`, `confidence`, `x_opencti_negative` |
-| Delete | `id` | - |
-
-### Relationship
-
-| Operation | Required | Optional |
-|---|---|---|
-| Create | `relationship_type`, `fromId`, `toId` | `description`, `confidence`, `start_time`, `stop_time`, `createdBy`, `objectMarking`, `objectLabel` |
-| Get | `id` | - |
-| Search | - | `searchTerm`, `fromOrToId`, `fromId`, `toId`, `relationship_type`, `limit` |
 | Delete | `id` | - |
 
 ## License
