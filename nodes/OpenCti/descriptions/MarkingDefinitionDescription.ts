@@ -109,7 +109,7 @@ export const markingDefinitionFields: INodeProperties[] = [
 			{
 				displayName: 'Color',
 				name: 'x_opencti_color',
-				type: 'string',
+				type: 'color',
 				default: '',
 				description: 'The color associated with the marking definition',
 			},
@@ -195,7 +195,7 @@ export const markingDefinitionFields: INodeProperties[] = [
 			{
 				displayName: 'Color',
 				name: 'x_opencti_color',
-				type: 'string',
+				type: 'color',
 				default: '',
 			},
 			{
