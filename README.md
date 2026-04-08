@@ -113,7 +113,8 @@ IPv4, IPv6, Domain Name, URL, Email Address, Hostname, File, MAC Address, User A
 ```
 n8n-nodes-opencti/
 ├── .github/workflows/
-│   └── ci.yml                          # GitHub Actions CI/CD
+│   ├── ci.yml                          # GitHub Actions CI (lint + build)
+│   └── publish.yml                     # Publish to npm with provenance
 ├── .vscode/
 │   └── launch.json                     # VSCode debugger config
 ├── credentials/
