@@ -22,14 +22,10 @@ export async function openCtiApiRequest(
 			query,
 			variables,
 		},
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${credentials.apiKey}`,
-		},
 		json: true,
 	};
 
-	const response = await this.helpers.httpRequest(options);
+	const response = await this.helpers.httpRequestWithAuthentication.call(this, 'openCtiApi', options);
 
 	if (response.errors && response.errors.length > 0) {
 		const errorMessages = response.errors.map(

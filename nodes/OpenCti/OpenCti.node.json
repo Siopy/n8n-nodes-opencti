@@ -15,8 +15,5 @@
 			}
 		]
 	},
-	"alias": ["CTI", "threat intelligence", "STIX", "cyber", "security", "IOC"],
-	"subcategories": {
-		"Miscellaneous": ["Cyber Threat Intelligence"]
-	}
+	"alias": ["CTI", "threat intelligence", "STIX", "cyber", "security", "IOC"]
 }
