@@ -4,8 +4,10 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	NodeApiError,
 	NodeConnectionTypes,
 } from 'n8n-workflow';
+import type { JsonObject } from 'n8n-workflow';
 
 import {
 	openCtiApiRequest,
@@ -707,7 +709,7 @@ export class OpenCti implements INodeType {
 					returnData.push(...executionData);
 					continue;
 				}
-				throw error;
+				throw new NodeApiError(this.getNode(), error as JsonObject);
 			}
 		}
 
